@@ -1,0 +1,10 @@
+module maq_h(input maq_h_clock,
+input maq_h_reset,
+input maq_h_incrementa_hora,
+output logic [3:0] maq_h_bcd_h_lsd,
+output logic [1:0] maq_h_bcd_h_msd);
+
+	al
+
+
+endmodule

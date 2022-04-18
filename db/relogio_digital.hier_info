@@ -1,0 +1,270 @@
+|relogio_digital
+clock => clock.IN4
+reset => reset.IN4
+s_lsd[0] << bcd_7seg:SEGUNDOS_LSD.bcd_display_out
+s_lsd[1] << bcd_7seg:SEGUNDOS_LSD.bcd_display_out
+s_lsd[2] << bcd_7seg:SEGUNDOS_LSD.bcd_display_out
+s_lsd[3] << bcd_7seg:SEGUNDOS_LSD.bcd_display_out
+s_lsd[4] << bcd_7seg:SEGUNDOS_LSD.bcd_display_out
+s_lsd[5] << bcd_7seg:SEGUNDOS_LSD.bcd_display_out
+s_lsd[6] << bcd_7seg:SEGUNDOS_LSD.bcd_display_out
+s_msd[0] << bcd_7seg:SEGUNDOS_MSD.bcd_display_out
+s_msd[1] << bcd_7seg:SEGUNDOS_MSD.bcd_display_out
+s_msd[2] << bcd_7seg:SEGUNDOS_MSD.bcd_display_out
+s_msd[3] << bcd_7seg:SEGUNDOS_MSD.bcd_display_out
+s_msd[4] << bcd_7seg:SEGUNDOS_MSD.bcd_display_out
+s_msd[5] << bcd_7seg:SEGUNDOS_MSD.bcd_display_out
+s_msd[6] << bcd_7seg:SEGUNDOS_MSD.bcd_display_out
+m_lsd[0] << bcd_7seg:MINUTOS_LSD.bcd_display_out
+m_lsd[1] << bcd_7seg:MINUTOS_LSD.bcd_display_out
+m_lsd[2] << bcd_7seg:MINUTOS_LSD.bcd_display_out
+m_lsd[3] << bcd_7seg:MINUTOS_LSD.bcd_display_out
+m_lsd[4] << bcd_7seg:MINUTOS_LSD.bcd_display_out
+m_lsd[5] << bcd_7seg:MINUTOS_LSD.bcd_display_out
+m_lsd[6] << bcd_7seg:MINUTOS_LSD.bcd_display_out
+m_msd[0] << bcd_7seg:MINUTOS_MSD.bcd_display_out
+m_msd[1] << bcd_7seg:MINUTOS_MSD.bcd_display_out
+m_msd[2] << bcd_7seg:MINUTOS_MSD.bcd_display_out
+m_msd[3] << bcd_7seg:MINUTOS_MSD.bcd_display_out
+m_msd[4] << bcd_7seg:MINUTOS_MSD.bcd_display_out
+m_msd[5] << bcd_7seg:MINUTOS_MSD.bcd_display_out
+m_msd[6] << bcd_7seg:MINUTOS_MSD.bcd_display_out
+h_lsd[0] << bcd_7seg:HORAS_LSD.bcd_display_out
+h_lsd[1] << bcd_7seg:HORAS_LSD.bcd_display_out
+h_lsd[2] << bcd_7seg:HORAS_LSD.bcd_display_out
+h_lsd[3] << bcd_7seg:HORAS_LSD.bcd_display_out
+h_lsd[4] << bcd_7seg:HORAS_LSD.bcd_display_out
+h_lsd[5] << bcd_7seg:HORAS_LSD.bcd_display_out
+h_lsd[6] << bcd_7seg:HORAS_LSD.bcd_display_out
+h_msd[0] << bcd_7seg:HORAS_MSD.bcd_display_out
+h_msd[1] << bcd_7seg:HORAS_MSD.bcd_display_out
+h_msd[2] << bcd_7seg:HORAS_MSD.bcd_display_out
+h_msd[3] << bcd_7seg:HORAS_MSD.bcd_display_out
+h_msd[4] << bcd_7seg:HORAS_MSD.bcd_display_out
+h_msd[5] << bcd_7seg:HORAS_MSD.bcd_display_out
+h_msd[6] << bcd_7seg:HORAS_MSD.bcd_display_out
+bcd_s_lsd[0] << bcd_s_lsd[0].DB_MAX_OUTPUT_PORT_TYPE
+bcd_s_lsd[1] << bcd_s_lsd[1].DB_MAX_OUTPUT_PORT_TYPE
+bcd_s_lsd[2] << bcd_s_lsd[2].DB_MAX_OUTPUT_PORT_TYPE
+bcd_s_lsd[3] << bcd_s_lsd[3].DB_MAX_OUTPUT_PORT_TYPE
+bcd_s_msd[0] << bcd_s_msd[0].DB_MAX_OUTPUT_PORT_TYPE
+bcd_s_msd[1] << bcd_s_msd[1].DB_MAX_OUTPUT_PORT_TYPE
+bcd_s_msd[2] << bcd_s_msd[2].DB_MAX_OUTPUT_PORT_TYPE
+bcd_m_lsd[0] << bcd_m_lsd[0].DB_MAX_OUTPUT_PORT_TYPE
+bcd_m_lsd[1] << bcd_m_lsd[1].DB_MAX_OUTPUT_PORT_TYPE
+bcd_m_lsd[2] << bcd_m_lsd[2].DB_MAX_OUTPUT_PORT_TYPE
+bcd_m_lsd[3] << bcd_m_lsd[3].DB_MAX_OUTPUT_PORT_TYPE
+bcd_m_msd[0] << bcd_m_msd[0].DB_MAX_OUTPUT_PORT_TYPE
+bcd_m_msd[1] << bcd_m_msd[1].DB_MAX_OUTPUT_PORT_TYPE
+bcd_m_msd[2] << bcd_m_msd[2].DB_MAX_OUTPUT_PORT_TYPE
+bcd_h_lsd[0] << bcd_h_lsd[0].DB_MAX_OUTPUT_PORT_TYPE
+bcd_h_lsd[1] << bcd_h_lsd[1].DB_MAX_OUTPUT_PORT_TYPE
+bcd_h_lsd[2] << bcd_h_lsd[2].DB_MAX_OUTPUT_PORT_TYPE
+bcd_h_lsd[3] << bcd_h_lsd[3].DB_MAX_OUTPUT_PORT_TYPE
+bcd_h_msd[0] << bcd_h_msd[0].DB_MAX_OUTPUT_PORT_TYPE
+bcd_h_msd[1] << bcd_h_msd[1].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|enable_1hz:meuhabilitador
+enable_clock => contador[0].CLK
+enable_clock => contador[1].CLK
+enable_reset => contador.OUTPUTSELECT
+enable_reset => contador.OUTPUTSELECT
+enable_pulseout <= Equal0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|maq_s:SEGUNDOS
+maq_s_clock => maq_s_incremento_minuto~reg0.CLK
+maq_s_clock => maq_s_bcd_s_msd[0]~reg0.CLK
+maq_s_clock => maq_s_bcd_s_msd[1]~reg0.CLK
+maq_s_clock => maq_s_bcd_s_msd[2]~reg0.CLK
+maq_s_clock => maq_s_bcd_s_lsd[0]~reg0.CLK
+maq_s_clock => maq_s_bcd_s_lsd[1]~reg0.CLK
+maq_s_clock => maq_s_bcd_s_lsd[2]~reg0.CLK
+maq_s_clock => maq_s_bcd_s_lsd[3]~reg0.CLK
+maq_s_reset => maq_s_bcd_s_lsd.OUTPUTSELECT
+maq_s_reset => maq_s_bcd_s_lsd.OUTPUTSELECT
+maq_s_reset => maq_s_bcd_s_lsd.OUTPUTSELECT
+maq_s_reset => maq_s_bcd_s_lsd.OUTPUTSELECT
+maq_s_reset => maq_s_bcd_s_msd.OUTPUTSELECT
+maq_s_reset => maq_s_bcd_s_msd.OUTPUTSELECT
+maq_s_reset => maq_s_bcd_s_msd.OUTPUTSELECT
+maq_s_reset => maq_s_incremento_minuto.OUTPUTSELECT
+maq_s_enable1hz => maq_s_incremento_minuto.OUTPUTSELECT
+maq_s_enable1hz => maq_s_bcd_s_lsd.OUTPUTSELECT
+maq_s_enable1hz => maq_s_bcd_s_lsd.OUTPUTSELECT
+maq_s_enable1hz => maq_s_bcd_s_lsd.OUTPUTSELECT
+maq_s_enable1hz => maq_s_bcd_s_lsd.OUTPUTSELECT
+maq_s_enable1hz => maq_s_bcd_s_msd.OUTPUTSELECT
+maq_s_enable1hz => maq_s_bcd_s_msd.OUTPUTSELECT
+maq_s_enable1hz => maq_s_bcd_s_msd.OUTPUTSELECT
+maq_s_bcd_s_lsd[0] <= maq_s_bcd_s_lsd[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_s_bcd_s_lsd[1] <= maq_s_bcd_s_lsd[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_s_bcd_s_lsd[2] <= maq_s_bcd_s_lsd[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_s_bcd_s_lsd[3] <= maq_s_bcd_s_lsd[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_s_bcd_s_msd[0] <= maq_s_bcd_s_msd[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_s_bcd_s_msd[1] <= maq_s_bcd_s_msd[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_s_bcd_s_msd[2] <= maq_s_bcd_s_msd[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_s_incremento_minuto <= maq_s_incremento_minuto~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|maq_m:MINUTOS
+maq_m_clock => maq_m_incremento_hora~reg0.CLK
+maq_m_clock => maq_m_bcd_m_msd[0]~reg0.CLK
+maq_m_clock => maq_m_bcd_m_msd[1]~reg0.CLK
+maq_m_clock => maq_m_bcd_m_msd[2]~reg0.CLK
+maq_m_clock => maq_m_bcd_m_lsd[0]~reg0.CLK
+maq_m_clock => maq_m_bcd_m_lsd[1]~reg0.CLK
+maq_m_clock => maq_m_bcd_m_lsd[2]~reg0.CLK
+maq_m_clock => maq_m_bcd_m_lsd[3]~reg0.CLK
+maq_m_reset => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_reset => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_reset => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_reset => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_reset => maq_m_bcd_m_msd.OUTPUTSELECT
+maq_m_reset => maq_m_bcd_m_msd.OUTPUTSELECT
+maq_m_reset => maq_m_bcd_m_msd.OUTPUTSELECT
+maq_m_reset => maq_m_incremento_hora.OUTPUTSELECT
+maq_m_enable1hz => maq_m_incremento_hora.OUTPUTSELECT
+maq_m_enable1hz => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_enable1hz => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_enable1hz => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_enable1hz => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_enable1hz => maq_m_bcd_m_msd.OUTPUTSELECT
+maq_m_enable1hz => maq_m_bcd_m_msd.OUTPUTSELECT
+maq_m_enable1hz => maq_m_bcd_m_msd.OUTPUTSELECT
+maq_m_incremento_minuto => maq_m_incremento_hora.OUTPUTSELECT
+maq_m_incremento_minuto => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_incremento_minuto => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_incremento_minuto => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_incremento_minuto => maq_m_bcd_m_lsd.OUTPUTSELECT
+maq_m_incremento_minuto => maq_m_bcd_m_msd.OUTPUTSELECT
+maq_m_incremento_minuto => maq_m_bcd_m_msd.OUTPUTSELECT
+maq_m_incremento_minuto => maq_m_bcd_m_msd.OUTPUTSELECT
+maq_m_bcd_m_lsd[0] <= maq_m_bcd_m_lsd[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_m_bcd_m_lsd[1] <= maq_m_bcd_m_lsd[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_m_bcd_m_lsd[2] <= maq_m_bcd_m_lsd[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_m_bcd_m_lsd[3] <= maq_m_bcd_m_lsd[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_m_bcd_m_msd[0] <= maq_m_bcd_m_msd[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_m_bcd_m_msd[1] <= maq_m_bcd_m_msd[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_m_bcd_m_msd[2] <= maq_m_bcd_m_msd[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_m_incremento_hora <= maq_m_incremento_hora~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|maq_h:HORAS
+maq_h_clock => maq_h_bcd_h_msd[0]~reg0.CLK
+maq_h_clock => maq_h_bcd_h_msd[1]~reg0.CLK
+maq_h_clock => maq_h_bcd_h_lsd[0]~reg0.CLK
+maq_h_clock => maq_h_bcd_h_lsd[1]~reg0.CLK
+maq_h_clock => maq_h_bcd_h_lsd[2]~reg0.CLK
+maq_h_clock => maq_h_bcd_h_lsd[3]~reg0.CLK
+maq_h_reset => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_reset => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_reset => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_reset => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_reset => maq_h_bcd_h_msd.OUTPUTSELECT
+maq_h_reset => maq_h_bcd_h_msd.OUTPUTSELECT
+maq_h_enable1hz => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_enable1hz => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_enable1hz => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_enable1hz => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_enable1hz => maq_h_bcd_h_msd.OUTPUTSELECT
+maq_h_enable1hz => maq_h_bcd_h_msd.OUTPUTSELECT
+maq_h_incremento_hora => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_incremento_hora => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_incremento_hora => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_incremento_hora => maq_h_bcd_h_lsd.OUTPUTSELECT
+maq_h_incremento_hora => maq_h_bcd_h_msd.OUTPUTSELECT
+maq_h_incremento_hora => maq_h_bcd_h_msd.OUTPUTSELECT
+maq_h_bcd_h_lsd[0] <= maq_h_bcd_h_lsd[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_h_bcd_h_lsd[1] <= maq_h_bcd_h_lsd[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_h_bcd_h_lsd[2] <= maq_h_bcd_h_lsd[2]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_h_bcd_h_lsd[3] <= maq_h_bcd_h_lsd[3]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_h_bcd_h_msd[0] <= maq_h_bcd_h_msd[0]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+maq_h_bcd_h_msd[1] <= maq_h_bcd_h_msd[1]~reg0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|bcd_7seg:SEGUNDOS_LSD
+bcd_bcd_in[0] => Decoder0.IN3
+bcd_bcd_in[1] => Decoder0.IN2
+bcd_bcd_in[2] => Decoder0.IN1
+bcd_bcd_in[3] => Decoder0.IN0
+bcd_display_out[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|bcd_7seg:SEGUNDOS_MSD
+bcd_bcd_in[0] => Decoder0.IN3
+bcd_bcd_in[1] => Decoder0.IN2
+bcd_bcd_in[2] => Decoder0.IN1
+bcd_bcd_in[3] => Decoder0.IN0
+bcd_display_out[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|bcd_7seg:MINUTOS_LSD
+bcd_bcd_in[0] => Decoder0.IN3
+bcd_bcd_in[1] => Decoder0.IN2
+bcd_bcd_in[2] => Decoder0.IN1
+bcd_bcd_in[3] => Decoder0.IN0
+bcd_display_out[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|bcd_7seg:MINUTOS_MSD
+bcd_bcd_in[0] => Decoder0.IN3
+bcd_bcd_in[1] => Decoder0.IN2
+bcd_bcd_in[2] => Decoder0.IN1
+bcd_bcd_in[3] => Decoder0.IN0
+bcd_display_out[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|bcd_7seg:HORAS_LSD
+bcd_bcd_in[0] => Decoder0.IN3
+bcd_bcd_in[1] => Decoder0.IN2
+bcd_bcd_in[2] => Decoder0.IN1
+bcd_bcd_in[3] => Decoder0.IN0
+bcd_display_out[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|relogio_digital|bcd_7seg:HORAS_MSD
+bcd_bcd_in[0] => Decoder0.IN3
+bcd_bcd_in[1] => Decoder0.IN2
+bcd_bcd_in[2] => Decoder0.IN1
+bcd_bcd_in[3] => Decoder0.IN0
+bcd_display_out[0] <= WideOr6.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[1] <= WideOr5.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[2] <= WideOr4.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[3] <= WideOr3.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[4] <= WideOr2.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[5] <= WideOr1.DB_MAX_OUTPUT_PORT_TYPE
+bcd_display_out[6] <= WideOr0.DB_MAX_OUTPUT_PORT_TYPE
+
+

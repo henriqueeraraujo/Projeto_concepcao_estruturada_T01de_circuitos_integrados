@@ -1,0 +1,6 @@
+module relogio_digital (clock, reset, s_lsd, s_msd, m_lsd, m_msd, h_lsd, h_msd)
+
+	input clock, reset;
+	output logic [6:0] s_lsd, [6:0] s_msd, [6:0] m_lsd, [6:0] m_msd, [6:0] h_lsd, [6:0] h_msd;
+	
+endmodule 

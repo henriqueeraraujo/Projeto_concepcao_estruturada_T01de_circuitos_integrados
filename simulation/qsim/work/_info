@@ -1,0 +1,57 @@
+m255
+K4
+z2
+!s11f vlog 2020.1 2020.02, Feb 28 2020
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 d/home/henrique/Projetos_quartus/relogio_digital/simulation/qsim
+vrelogio_digital
+Z1 !s110 1649276254
+!i10b 1
+!s100 g5^3_YHULQZWAY;IWZAZI2
+Z2 !s11b Dg1SIo80bB@j0V0VzS_@n1
+IEJ=0m>D=`=0HON`H=8LOz2
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1649276253
+8relogio_digital.vo
+Frelogio_digital.vo
+!i122 44
+L0 32 3386
+Z4 OV;L;2020.1;71
+r1
+!s85 0
+31
+Z5 !s108 1649276254.000000
+!s107 relogio_digital.vo|
+!s90 -work|work|relogio_digital.vo|
+!i113 1
+Z6 o-work work
+Z7 tCvgOpt 0
+vrelogio_digital_vlg_vec_tst
+R1
+!i10b 1
+!s100 9FIGe3U6[b:Vb>glQZYEh0
+R2
+INC^ULZH43U]c061kh95GF0
+R3
+R0
+w1649276250
+8Waveform.vwf.vt
+FWaveform.vwf.vt
+!i122 45
+L0 30 57
+R4
+r1
+!s85 0
+31
+R5
+!s107 Waveform.vwf.vt|
+!s90 -work|work|Waveform.vwf.vt|
+!i113 1
+R6
+R7
